@@ -2,7 +2,7 @@
 @charset "UTF-8";
 
 
-    <style>
+    
         /* Configurações Globais e de Impressão */
         @page {
             size: A2;
@@ -13,16 +13,17 @@
             margin: 0;
             padding: 0;
         }
+   
         body {
             font-family: 'Times New Roman', Times, serif;
-            background-color: #eff1ec;
+            background-color: #37d8d8;
             color: #2d1a10;
             -webkit-print-color-adjust: exact;
         }
         .capa {
             width: 400px;
             height: 400px;
-            border: 1px solid black;
+            border: 3px solid black;
             padding: 2px;
             border-radius: 20px;
         }
@@ -56,6 +57,33 @@
             border: 1px solid black;
             border-radius: 20px;
         }
+
+        .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    page-break-after: always;
+    background: #ca9c46ce;
+    background-image: radial-gradient(circle, rgba(215,204,200,0.2) 0%, rgba(244,234,225,1) 100%);
+    padding: 30mm 25mm;
+    overflow: hidden;
+    
+    /* ADICIONE ESTAS DUAS LINHAS PARA CENTRALIZAR A PÁGINA NA TELA */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20mm; /* Dá um respiro entre uma página e outra */
+}
+
+.capa, .img, .novo, .como, .forma, .simbolo, .conclusao, .amor {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 20px;
+}
         .forma {
             width: 300px;
             height: 350px;
@@ -178,7 +206,7 @@
 
         p {
             font-size: 12pt;
-            line-height: 1.7;
+            line-height: 1em;
             margin-bottom: 6mm;
             text-align: justify;
             text-indent: 12mm; /* Parágrafo com recuo tradicional de livro */
