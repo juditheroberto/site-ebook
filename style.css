@@ -1,0 +1,263 @@
+    
+@charset "UTF-8";
+
+
+    <style>
+        /* Configurações Globais e de Impressão */
+        @page {
+            size: A2;
+            margin: 0; /* Permite que o fundo preencha toda a folha */
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #eff1ec;
+            color: #2d1a10;
+            -webkit-print-color-adjust: exact;
+        }
+        .capa {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            padding: 2px;
+            border-radius: 20px;
+        }
+        .img {
+            width: 500px;
+            height: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+         }
+        .novo {
+            width: 400px;
+            height: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+        .como {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+        .forma {
+            width: 300px;
+            height: 350px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+        .simbolo {
+            width: 400px;
+            height: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+        .conclusao {
+            width: 500px;
+            height: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+
+        
+
+        /* Container de cada página do E-book (Simulando uma folha A4) */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            page-break-after: always;
+            background: #ca9c46ce;
+            /* Degradê sutil para imitar a variação de cor do papel antigo */
+            background-image: radial-gradient(circle, rgba(215,204,200,0.2) 0%, rgba(244,234,225,1) 100%);
+            padding: 30mm 25mm;
+            overflow: hidden;
+        }
+
+        /* Moldura decorativa clássica interna */
+        .page::before {
+            content: "";
+            position: absolute;
+            top: 15mm;
+            bottom: 15mm;
+            left: 15mm;
+            right: 15mm;
+            border: 2px solid rgba(48, 46, 46, 0.719);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: "";
+            position: absolute;
+            top: 17mm;
+            bottom: 17mm;
+            left: 17mm;
+            right: 17mm;
+            border: 1px solid rgba(141, 110, 99, 0.3);
+            pointer-events: none;
+        }
+
+        /* Número da página posicionado no rodapé */
+        .page-number {
+            position: absolute;
+            bottom: 20mm;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 11pt;
+            font-style: italic;
+            color: #5d4037;
+        }
+
+        /* Tipografia e Títulos */
+        h1 {
+            font-size: 32pt;
+            text-align: center;
+            color: #3e2723;
+            margin-bottom: 5mm;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 20pt;
+            text-align: center;
+            color: #5d4037;
+            margin-bottom: 10mm;
+            font-weight: normal;
+            border-bottom: 1px solid #a1887f;
+            padding-bottom: 3mm;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 16pt;
+            text-align: center;
+            font-style: italic;
+            color: #5d4037;
+            margin-bottom: 25mm;
+        }
+
+        .description {
+            font-size: 13pt;
+            text-align: center;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 80%;
+            color: #4e342e;
+        }
+
+        p {
+            font-size: 12pt;
+            line-height: 1.7;
+            margin-bottom: 6mm;
+            text-align: justify;
+            text-indent: 12mm; /* Parágrafo com recuo tradicional de livro */
+        }
+
+        /* Listas de Ítens e Simbologias */
+        ul {
+            list-style-type: none;
+            margin-top: 5mm;
+            margin-bottom: 8mm;
+            padding-left: 5mm;
+        }
+
+        li {
+            font-size: 12pt;
+            line-height: 1.6;
+            margin-bottom: 5mm;
+            text-align: justify;
+            position: relative;
+            padding-left: 6mm;
+        }
+
+        /* Marcador customizado para a lista */
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8d6e63;
+            font-size: 14pt;
+        }
+
+        li strong {
+            color: #3e2723;
+            font-size: 12.5pt;
+        }
+
+        /* Layout específico da Capa */
+        .cover {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cover-content {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 10mm 0;
+            color: #8d6e63;
+            font-size: 18pt;
+        }
+
+        /* Página de Encerramento */
+        .saudacao {
+            font-size: 26pt;
+            text-align: center;
+            font-style: italic;
+            color: #3e2723;
+            margin-top: 25mm;
+            margin-bottom: 8mm;
+            line-height: 1.4;
+        }
+        
+        .coracao {
+            text-align: center;
+            font-size: 24pt;
+            color: #f10606;
+        }
+        .amor {
+            width: 400px;
+            height: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
